@@ -15,6 +15,8 @@ public class Curso {
 	private String nome;
 	private String categoria;
 
+	public Curso() {	}
+	
 	public Curso(String nome, String categoria) {
 		this.nome = nome;
 		this.categoria = categoria;
@@ -67,6 +69,11 @@ public class Curso {
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+
+	@Override
+	public String toString() {
+		return "Curso [id=" + id + ", nome=" + nome + ", categoria=" + categoria + "]";
 	}
 
 }
