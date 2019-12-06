@@ -1,5 +1,7 @@
 package com.alura.exercicio.forum.form;
 
+import java.util.Optional;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
