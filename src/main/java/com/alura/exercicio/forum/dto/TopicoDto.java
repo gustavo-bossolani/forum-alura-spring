@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import com.alura.exercicio.forum.modelo.Topico;
 
-public class TopicoDTO {
+public class TopicoDto {
 	
 	private Long id;
 	private String titulo;
@@ -16,7 +16,7 @@ public class TopicoDTO {
 
 	
 	
-	public TopicoDTO(Topico topico) {
+	public TopicoDto(Topico topico) {
 		this.id = topico.getId();
 		this.titulo = topico.getTitulo();
 		this.mensagem = topico.getMensagem();
@@ -37,10 +37,10 @@ public class TopicoDTO {
 		return dataCriacao;
 	}
 	
-	public static List<TopicoDTO> converter (List<Topico> topicos){
-		List<TopicoDTO> topicoDto = new ArrayList<>();
+	public static List<TopicoDto> converter (List<Topico> topicos){
+		List<TopicoDto> topicoDto = new ArrayList<>();
 		for (Topico topico : topicos) {
-			topicoDto.add(new TopicoDTO(topico));
+			topicoDto.add(new TopicoDto(topico));
 		}
 		return topicoDto;
 		
