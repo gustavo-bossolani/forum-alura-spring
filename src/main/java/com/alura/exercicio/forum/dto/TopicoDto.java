@@ -1,9 +1,9 @@
 package com.alura.exercicio.forum.dto;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
 
 import com.alura.exercicio.forum.modelo.Topico;
 
@@ -37,12 +37,8 @@ public class TopicoDto {
 		return dataCriacao;
 	}
 	
-	public static List<TopicoDto> converter (List<Topico> topicos){
-		List<TopicoDto> topicoDto = new ArrayList<>();
-		for (Topico topico : topicos) {
-			topicoDto.add(new TopicoDto(topico));
-		}
-		return topicoDto;
+	public static Page<TopicoDto> converter (Page<Topico> topicos){
+		return topicos.map(TopicoDto:: new );
 		
 //		Retornando usando a sintaxe do Java 8
 //		return topicos.stream().map(TopicoDTO :: new).collect(Collectors.toList());
