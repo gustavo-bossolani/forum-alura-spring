@@ -1,5 +1,7 @@
 package com.alura.exercicio.forum.form;
 
+import java.util.Optional;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -40,7 +42,11 @@ public class TopicoForm {
 	}
 	
 	public Topico converter(CursoRepository repository) {
-		Curso curso = repository.findByNome(this.nomeCurso);
-		return new Topico(titulo, mensagem, curso);
+		Optional<Curso> optional = repository.findByNome(this.nomeCurso);
+		if(optional.isPresent()) {
+			Curso curso = optional.get();
+			return new Topico(titulo, mensagem, curso);
+		}
+		return null;
 	}
 }

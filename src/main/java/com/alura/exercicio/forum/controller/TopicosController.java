@@ -60,10 +60,12 @@ public class TopicosController {
 	@Transactional
 	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid TopicoForm topicoForm, UriComponentsBuilder uriBuilder) {
 		Topico topico = topicoForm.converter(cursoRepository);
-		topicoRepository.save(topico);
-
-		URI uri = uriBuilder.path("/topicos/{ id }").buildAndExpand(topico.getId()).toUri();
-		return ResponseEntity.created(uri).body(new TopicoDto(topico));
+		if( topico != null ) {
+			topicoRepository.save(topico);
+			URI uri = uriBuilder.path("/topicos/{ id }").buildAndExpand(topico.getId()).toUri();
+			return ResponseEntity.created(uri).body(new TopicoDto(topico));
+		}
+		return ResponseEntity.badRequest().build();
 	}
 
 	@GetMapping("/{id}")
